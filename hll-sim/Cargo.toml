@@ -1,0 +1,11 @@
+[package]
+name = "hll-sim"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hll-core = { path = "../hll-core", features = ["io-npy"] }
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }
+anyhow = "1"

@@ -1,0 +1,22 @@
+[package]
+name = "hll-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ndarray = { version = "0.15", features = ["rayon"] }   # 並列は後で
+thiserror = "1"
+tracing = "0.1"
+ndarray-npy = { version = "0.8", optional = true }
+
+[features]
+io-npy = ["ndarray-npy"]
+strict = []     # 全チェック版
+tolerant = []   # ホットパスunchecked+出口チェック
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "flux"
+harness = false

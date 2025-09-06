@@ -10,5 +10,5 @@ pub mod solver;
 pub mod diagnostics;
 
 pub use config::Config;
-pub use types::{Cons, Prim, Floors, Diagnostics, Result};
+pub use types::{Cons, Prim, Floors, Diagnostics, Result, SolverError};
 pub use solver::Solver;

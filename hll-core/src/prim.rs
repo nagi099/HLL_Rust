@@ -6,14 +6,12 @@ pub fn cons_to_prim_unchecked(cons: Cons, gamma: f64) -> Prim {
     let p = (gamma - 1.0) * (cons.e - cons.rho * (u * u + v * v) / 2.0);
     let a = (gamma * p / cons.rho).sqrt();
 
-    let prim = Prim {
-        u: u,
-        v: v,
-        p: p,
-        a: a,
-    };
-
-    prim
+    Prim { 
+        u: u, 
+        v: v, 
+        p: p, 
+        a: a, 
+    }
 }
 
 pub fn prim_to_cons_unchecked(prim: Prim, gamma: f64) -> Cons {
@@ -22,13 +20,12 @@ pub fn prim_to_cons_unchecked(prim: Prim, gamma: f64) -> Cons {
     let rhov = rho * prim.v;
     let e = prim.p / (gamma - 1.0) + rho * (prim.u * prim.u + prim.v * prim.v) / 2.0;
 
-    let cons = Cons { 
+    Cons { 
         rho: rho, 
         rhou: rhou, 
         rhov: rhov, 
-        e: e };
-
-    cons
+        e: e 
+    }
 }
 
 pub fn cons_to_prim_checked(cons: Cons, gamma: f64, floors: Floors, i: usize, j: usize) -> Result<Prim> {
@@ -49,14 +46,12 @@ pub fn cons_to_prim_checked(cons: Cons, gamma: f64, floors: Floors, i: usize, j:
         return Err(SolverError::NonPhysical { i: i, j: j, why: "NaN/Inf".to_string() });
     }
 
-    let prim = Prim {
+    Ok(Prim {
         u: u,
         v: v,
         p: p,
         a: a,
-    };
-
-    Ok(prim)
+    })
 }
 
 pub fn prim_to_cons_checked(prim: Prim, gamma: f64, floors: Floors, i: usize, j: usize) -> Result<Cons> {
@@ -77,11 +72,10 @@ pub fn prim_to_cons_checked(prim: Prim, gamma: f64, floors: Floors, i: usize, j:
         return Err(SolverError::NonPhysical { i: i, j: j, why: "NaN/Inf".to_string() });
     }
 
-    let cons = Cons { 
+    Ok(Cons { 
         rho: rho, 
         rhou: rhou, 
         rhov: rhov, 
-        e: e };
-    
-    Ok(cons)
+        e: e 
+    })
 }

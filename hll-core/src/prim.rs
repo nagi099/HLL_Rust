@@ -24,7 +24,7 @@ pub fn prim_to_cons_unchecked(prim: Prim, gamma: f64) -> Cons {
         rho: rho, 
         rhou: rhou, 
         rhov: rhov, 
-        e: e 
+        e: e, 
     }
 }
 

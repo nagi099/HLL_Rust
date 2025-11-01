@@ -1,6 +1,7 @@
-use crate::types::{Cons, Prim, Floors, result, solverError};
+use crate::types::{Cons, Prim, Floors, Result, SolverError};
+use crate::prim::cons_to_prim_unchecked;
 
-pub fn flux_x_hll(ul: Cons, ur: Cons, gamma: f64, diag: bool) -> Cons {
+pub fn flux_x_hll(ul: Cons, ur: Cons, gamma: f64, _diag: bool) -> Cons {
     let prim_l = cons_to_prim_unchecked(ul, gamma);
     let prim_r = cons_to_prim_unchecked(ur, gamma);
 
@@ -35,7 +36,7 @@ pub fn flux_x_hll(ul: Cons, ur: Cons, gamma: f64, diag: bool) -> Cons {
     
 }
 
-fn flux_x(prim: Prim, cons: Cons, gamma: f64) -> Cons {
+fn flux_x(prim: Prim, cons: Cons, _gamma: f64) -> Cons {
     let rho = cons.rho;
     let u = prim.u;
     let v = prim.v;
@@ -49,7 +50,7 @@ fn flux_x(prim: Prim, cons: Cons, gamma: f64) -> Cons {
     }
 }
 
-pub fn flux_y_hll(ul: Cons, ur: Cons, gamma: f64, diag: bool) -> Cons {
+pub fn flux_y_hll(ul: Cons, ur: Cons, gamma: f64, _diag: bool) -> Cons {
     let prim_l = cons_to_prim_unchecked(ul, gamma);
     let prim_r = cons_to_prim_unchecked(ur, gamma);
 
@@ -84,7 +85,7 @@ pub fn flux_y_hll(ul: Cons, ur: Cons, gamma: f64, diag: bool) -> Cons {
     
 }
 
-fn flux_y(prim: Prim, cons: Cons, gamma: f64) -> Cons {
+fn flux_y(prim: Prim, cons: Cons, _gamma: f64) -> Cons {
     let rho = cons.rho;
     let u = prim.u;
     let v = prim.v;

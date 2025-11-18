@@ -7,14 +7,14 @@ pub struct Solver {
 }
 
 impl Solver {
-    pub fn new(nx: usize, ny: usize, cfg: Config) -> Result<Self> {
+    pub fn new(nx: usize, ny: usize, nghost: usize, cfg: Config) -> Result<Self> {
         if nx == 0 || ny == 0 {
             return Err(SolverError::Config("nx, ny must be > 0".into()));
         }
         if cfg.gamma <= 1.0 {
             return Err(SolverError::Config("gamma must be > 1".into()));
         }
-        Ok(Self { grid: Grid2D::new(nx, ny), cfg, step: 0 })
+        Ok(Self { grid: Grid2D::new(nx, ny, nghost), cfg, step: 0 })
     }
 
     pub fn step_index(&self) -> usize { self.step }

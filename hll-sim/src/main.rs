@@ -26,7 +26,9 @@ fn main() -> Result<()> {
         floors: Floors { rho: 1e-12, p: 1e-12 },
     };
 
-    let mut solver = Solver::new(args.nx, args.ny, cfg)?;
+    let nghost = 1;
+
+    let mut solver = Solver::new(args.nx, args.ny, nghost, cfg)?;
     solver.init_sod_x(); // or init_vortex()
 
     let mut t = 0.0;
